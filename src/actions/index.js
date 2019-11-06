@@ -3,7 +3,7 @@ export const setOrders = orders => ({
   orders
 });
 
-export const setLoading = bool => ({
-  type: 'IS_LOADING',
-  bool
+export const setNewOrder = newOrder => ({
+  type: 'NEW_ORDER',
+  newOrder
 })
