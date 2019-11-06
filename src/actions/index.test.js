@@ -5,11 +5,11 @@ describe('actions', () => {
   it('should have type of SET_ORDERS', () => {
     const orders = [{
       id: 1,
-      ingredients: (5) ["beans", "lettuce", "carnitas", "queso fresco", "jalapeno"],
+      ingredients: ["beans", "lettuce", "carnitas", "queso fresco", "jalapeno"],
       name: "Pat"
     }, {
       id: 2,
-      ingredients: (5) ["beans", "rice", "carnitas", "jalapeno"],
+      ingredients: ["beans", "rice", "carnitas", "jalapeno"],
       name: "SAM"
     }]
     const expectedAction = {
@@ -23,7 +23,7 @@ describe('actions', () => {
   it('should have type of NEW_ORDER', () => {
     const newOrder = [{
       id: 1,
-      ingredients: (5) ["beans", "lettuce", "carnitas", "queso fresco", "jalapeno"],
+      ingredients: ["beans", "lettuce", "carnitas", "queso fresco", "jalapeno"],
       name: "Pat"
     }]
     const expectedAction = {
