@@ -28,6 +28,16 @@ describe('OrderFromContainer', () => {
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
     });
+
+    it('should update state when clearInputs is called', () => {
+      const mockstate = {
+        name: 'name',
+        ingredients: ["beans", "lettuce", "carnitas", "queso fresco", "jalapeno"]
+      }
+      const expected = ''
+      wrapper.instance().clearInputs()
+      expect(wrapper.state('name')).toEqual(expected);
+    });
   });
 
   describe('mapStateToProps', () => {
