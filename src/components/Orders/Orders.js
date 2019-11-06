@@ -40,11 +40,11 @@ export class Orders extends Component {
   }
 } 
 
-const mapStateToProps = ({ orders}) => ({
+export const mapStateToProps = ({ orders}) => ({
   orders
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   setOrders: orders => dispatch( setOrders(orders) )
 })
 
