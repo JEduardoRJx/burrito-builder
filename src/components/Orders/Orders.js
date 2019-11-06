@@ -1,25 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setOrders } from '../../actions';
+import { getOrders } from '../../apiCalls';
 import './Orders.css';
 
-const Orders = props => {
-  const orderEls = props.orders.map(order => {
+export class Orders extends Component {
+
+  async componentDidMount() {
+    const { setOrders} = this.props
+    try {
+      const orders = await getOrders();
+      setOrders(orders);
+    } catch({ message }) {
+      console.log(message)
+    }
+  }
+
+  render() {
+    const { orders} = this.props
+    const orderEls = orders.map(order => {
+      return (
+        <div className="order">
+          <h3>{order.name}</h3>
+          <ul className="ingredient-list">
+            {order.ingredients.map(ingredient => {
+              return <li>{ingredient}</li>
+            })}
+          </ul>
+        </div>
+      )
+    });
+
     return (
-      <div className="order">
-        <h3>{order.name}</h3>
-        <ul className="ingredient-list">
-          {order.ingredients.map(ingredient => {
-            return <li>{ingredient}</li>
-          })}
-        </ul>
-      </div>
+      <section>
+        { orderEls.length ? orderEls : <p>No orders yet!</p> }
+      </section>
     )
-  });
+  }
+} 
 
-  return (
-    <section>
-      { orderEls.length ? orderEls : <p>No orders yet!</p> }
-    </section>
-  )
-}
+const mapStateToProps = ({ orders}) => ({
+  orders
+});
 
-export default Orders;
+const mapDispatchToProps = dispatch => ({
+  setOrders: orders => dispatch( setOrders(orders) )
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Orders);
