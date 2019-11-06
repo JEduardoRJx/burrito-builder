@@ -37,6 +37,9 @@ class OrderForm extends Component {
         </button>
       )
     });
+    const submitOrder = this.state.ingredients.length < 1 || this.state.name === '' ? <p>Nothing to Submit</p> : <button onClick={e => this.handleSubmit(e)}>
+    Submit Order
+  </button>
 
     return (
       <form>
@@ -52,9 +55,7 @@ class OrderForm extends Component {
 
         <p>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
-        <button onClick={e => this.handleSubmit(e)}>
-          Submit Order
-        </button>
+        {submitOrder}
       </form>
     )
   }
