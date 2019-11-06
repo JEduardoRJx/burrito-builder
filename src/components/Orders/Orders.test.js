@@ -6,6 +6,29 @@ import { setOrders } from '../../actions';
 describe('OrdersContainer', () => {
 
   describe('Orders component', () => {
+    let wrapper;
+    const mockOrders = [{
+      id: 1,
+      ingredients: ["beans", "lettuce", "carnitas", "queso fresco", "jalapeno"],
+      name: "Pat"
+    }, {
+      id: 2,
+      ingredients: ["beans", "rice", "carnitas", "jalapeno"],
+      name: "SAM"
+    }]
+    const mockSetOrders = jest.fn();
+
+    beforeEach(() => {
+      wrapper = shallow(<Orders 
+        orders={mockOrders}
+        setOrders={mockSetOrders}
+      />);  
+    });
+    
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
 
   });
 

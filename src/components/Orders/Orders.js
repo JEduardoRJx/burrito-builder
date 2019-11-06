@@ -18,7 +18,6 @@ export class Orders extends Component {
 
   render() {
     const { orders} = this.props
-    console.log(orders)
     const orderEls = orders.map(order => {
       return (
         <div className="order" key={order.id}>
